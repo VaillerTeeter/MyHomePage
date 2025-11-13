@@ -1,0 +1,88 @@
+# 全局配置
+
+# 页面基础设置
+# 标题
+title: Vaciller's Homepage
+# 自定义页面的描述
+description: Vaciller's private homepage
+# 起始 URL
+startUrl: https://homepage.vaciller.top/
+# 网站图标
+favicon: /images/homepage_logo.png
+# 语言
+# ca, de, en, es, fr, he, hr, hu, it, nb-NO, nl, pt, ru, sv, vi, zh-CN, zh-Hant
+language: en
+# 主题，配置后将禁用主题切换 dark light
+theme: dark
+# 调色板，配置后将禁用调色板调色
+# slate, gray, zinc, neutral, stone, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose, red, white
+color: slate
+
+# 背景与样式
+# 背景图片
+background:
+  image: /images/background.png
+  # 背景毛玻璃效果
+  # blur: sm # see https://tailwindcss.com/docs/backdrop-blur
+  # 饱和度设置
+  saturate: 200 # see https://tailwindcss.com/docs/backdrop-saturate
+  # 亮度设置
+  brightness: 100 # see https://tailwindcss.com/docs/backdrop-brightness
+  # 不透明度，0-100
+  opacity: 100
+# 卡片背景毛玻璃效果
+cardBlur: sm # see https://tailwindcss.com/docs/backdrop-blur
+# 使页面更宽
+fullWidth: true
+# 最大组列数
+# 设置较大屏幕尺寸上组的最大列数（仅适用于：style: columns，stle: row 的不受限制）
+# 默认的：services：4，bookmarks：6，MAX：8
+maxGroupColumns: 5
+# 启用 services 和 bookmarks 的可折叠功能
+disableCollapse: false
+# 初始折叠设置
+groupsInitiallyCollapsed: false
+# 等高卡片设置
+useEqualHeights: true
+# 头部样式
+# underlined/boxed/clean/boxedWidgets
+headerStyle: boxedWidgets
+
+# 快速搜索与行为
+# 点击卡片的页面弹出方式
+# _blank：新标签页
+# _self：当前页面
+# _top：新窗口
+target: _blank
+# 快速搜索，只要索小组件没有焦点，直接键入即可
+quicklaunch:
+  # 用于控制搜索中是否包含项目描述，默认情况下是 false，启用后，与项目名称匹配的结果将放置在仅与描述匹配的结果之上
+  searchDescriptions: true
+  # 禁用自动将当前选择的网络搜索（例如从小部件）作为快速启动选项，默认情况下是 false
+  hideInternetSearch: true
+  # 显示互联网搜索的搜索建议，如果未指定，则该设置将从搜索小部件继承，如果在那里也没有指定它，它将默认为 false，对于自定义提供程序，需要设置 suggestionUrl 才能使其正常工作
+  showSearchSuggestions: true
+  # 禁用检测并提供打开 URL 的选项，默认情况下是 false
+  hideVisitURL: true
+  # 搜索引擎提供商，如果未指定任何内容，它将尝试使用为搜索小部件设置的提供程序，如果两者都不存在，则将禁用互联网搜索
+  # google, duckduckgo, bing, baidu, brave or custom
+  provider: duckduckgo
+
+# 状态显示样式
+# 隐藏版本信息
+hideVersion: true
+# 禁用从 GitHub 检查新版本（默认启用）
+disableUpdateCheck: true
+# 显示所有扩展的 Docker 统计信息
+showStats: true
+# 网址状态
+# dot：显示一个绿点，表示监控 ping 成功或正常状态
+# basic：显示 UP 或 DOWN 以进行监控和 ping
+statusStyle: "dot"
+# 隐藏小组件错误消息
+hideErrors: true
+
+# # API Keys
+# providers:
+#   openweathermap:
+#     apiKey: f0d6ca3c3143ebd728fd77697dcede94

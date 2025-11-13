@@ -1,0 +1,839 @@
+# 信息类小部件设置
+# 资源详情
+# 官方文档：https://gethomepage.dev/widgets/info/resources/
+- resources:
+    # 分组标题；可复用多次生成多个卡片
+    # label: xxx
+    cpu: true
+    memory: true
+    disk: /
+    # bytes/bbytes 1024/1000
+    diskUnits: bytes
+    cputemp: true
+    tempmin: 0
+    tempmax: 100
+    # metric/imperial °C/°F
+    units: metric
+    # 运行时间
+    uptime: true
+    network: true
+    # 展开卡片，额外显示绝对值
+    expanded: true
+    # 轮询间隔，ms
+    refresh: 3000
+
+# 搜索
+# 官方文档：https://gethomepage.dev/widgets/info/search/
+- search:
+    # google, duckduckgo, bing, baidu, brave or custom
+    provider: [duckduckgo, google, bing, brave]
+    # 页面加载后自动聚焦搜索框
+    focus: true
+    # _blank：新标签页
+    # _self：当前页面
+    # _top：新窗口
+    target: _blank
+    # 显示互联网搜索的搜索建议
+    showSearchSuggestions: true
+
+# 天气插件
+# 官方文档：https://gethomepage.dev/widgets/info/openmeteo/
+- openmeteo:
+    # 显示的文本文字
+    # label: 当前位置
+    # 坐标，无此项则显示定位地址天气
+    # latitude: 50.449684
+    # longitude: 30.525026
+    # metric/imperial °C/°F
+    units: metric
+    # API 结果缓存时间，单位分钟
+    cache: 5
+    format:
+      maximumFractionDigits: 1
+
+# 时间小部件
+# 官方文档：https://gethomepage.dev/widgets/info/datetime/
+# format 中的时间设置的官方文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+# - datetime:
+#     # 字体大小
+#     # 4xl/3xl/2xl/xl/md/sm/xs
+#     text_size: xl
+#     locale: en-CA
+#     format:
+#         year:   numeric
+#         month:  2-digit
+#         day:    2-digit
+#         hour:   2-digit
+#         minute: 2-digit
+#         second: 2-digit
+#         hour12: true
+
+# Glances
+# 官方文档：https://gethomepage.dev/widgets/info/glances/
+# ToDo
+
+# 标题栏文字
+# 官方文档：https://gethomepage.dev/widgets/info/greeting/
+# - greeting:
+#     # 字体大小
+#     # 4xl/3xl/2xl/xl/md/sm/xs
+#     text_size: xl
+#     text: 欢迎回家 🏠
+
+# Kubernetes
+# 官方文档：https://gethomepage.dev/widgets/info/kubernetes/
+# ToDo
+
+# 标题栏中的 Logo
+# 官方文档：https://gethomepage.dev/widgets/info/logo/
+# - logo:
+#     icon: /images/homepage_logo.png
+
+# Longhorn
+# 官方文档：https://gethomepage.dev/widgets/info/longhorn/
+# ToDo
+
+# 天气插件
+# 官方文档：https://gethomepage.dev/widgets/info/openweathermap/
+# 官方网站：https://openweathermap.org/，注册并获取 API Key
+# 未知原因，API Error
+# - openweathermap:
+#     # 显示的文本文字
+#     # label: 当前位置
+#     # 坐标，无此项则显示定位地址天气
+#     # latitude: 50.449684
+#     # longitude: 30.525026
+#     # metric/imperial °C/°F
+#     units: metric
+#     # settings.yaml 中配置的 API Key 的替代值
+#     provider: openweathermap
+#     apiKey: f0d6ca3c3143ebd728fd77697dcede94
+#     # API 结果缓存时间，单位分钟
+#     cache: 5
+#     format:
+#       maximumFractionDigits: 1
+
+# Stocks
+# 官方文档：https://gethomepage.dev/widgets/info/stocks/
+# ToDo
+
+# Unifi Controller
+# 官方文档：https://gethomepage.dev/widgets/info/unifi_controller/
+# ToDo
+
+
+# 应用类小部件设置
+# A
+    # Adguard Home
+    # DNS 广告屏蔽网关，小部件显示「总查询 / 被拦截 / 延迟」等统计
+    # 官方文档：https://gethomepage.dev/widgets/services/adguard-home/
+    # ToDo
+
+    # APC UPS Monitoring
+    # APC 或 Schneider UPS 的电源监控，小部件显示电量、负载、剩余时间
+    # 官方文档：https://gethomepage.dev/widgets/services/apcups/
+    # ToDo
+
+    # ArgoCD
+    # Kubernetes GitOps 持续交付平台，小部件汇总「应用总数 / 同步状态 / 健康度」
+    # 官方文档：https://gethomepage.dev/widgets/services/argocd/
+    # ToDo
+
+    # Atsumeru
+    # 自托管漫画 & 轻小说库，小部件展示「系列数 / 卷数 / 章节数 / 分类数」
+    # 官方文档：https://gethomepage.dev/widgets/services/atsumeru/
+    # ToDo
+
+    # Audiobookshelf
+    # 自托管有声书与播客服务器，小部件显示「播客数 / 书籍数 / 时长」
+    # 官方文档：https://gethomepage.dev/widgets/services/audiobookshelf/
+    # ToDo
+
+    # Authentik
+    # 统一身份认证与 SSO，小部件展示「用户数 / 24h 登录 / 失败登录」
+    # 官方文档：https://gethomepage.dev/widgets/services/authentik/
+    # ToDo
+
+    # Autobrr
+    # 自动化种子推送工具，小部件显示「已批准 / 已拒绝 / 过滤规则 / 索引器」
+    # 官方文档：https://gethomepage.dev/widgets/services/autobrr/
+    # ToDo
+
+    # Azure DevOps
+    # 微软云端 DevOps 平台，小部件展示「流水线状态」或「PR 统计」
+    # 官方文档：https://gethomepage.dev/widgets/services/azuredevops/
+    # ToDo
+
+# B
+    # Bazarr
+    # 自动为剧集/电影下载并管理字幕，小部件显示「缺失剧集数 / 缺失电影数」
+    # 官方文档：https://gethomepage.dev/widgets/services/bazarr/
+    # ToDo
+
+    # Beszel
+    # 轻量级多主机监控面板，小部件展示「所有节点在线数」或单机的「CPU-内存-磁盘-网络」实时数据
+    # 官方文档：https://gethomepage.dev/widgets/services/beszel/
+    # ToDo
+
+# C
+    # Caddy
+    # 自动 HTTPS 反向代理 & Web 服务器，小部件显示「上游节点数 / 请求量 / 失败请求
+    # 官方文档：https://gethomepage.dev/widgets/services/caddy/
+    # ToDo
+
+    # Calendar
+    # 在 Homepage 内嵌「月历」或「日程表」，可聚合 *arr 应用或任意 iCal 源的事件
+    # 官方文档：https://gethomepage.dev/widgets/services/calendar/
+    # ToDo
+
+    # Calibre-web
+    # 在线电子书库前端，小部件呈现「书籍 / 作者 / 分类 / 丛书」数量
+    # 官方文档：https://gethomepage.dev/widgets/services/calibre-web/
+    # ToDo
+
+    # Changedetection.io
+    # 网页变更监控服务，小部件统计「已发现差异数 / 总监控页数」
+    # 官方文档：https://gethomepage.dev/widgets/services/changedetectionio/
+    # ToDo
+
+    # Channels DVR Server
+    # 电视直播与录制服务器，小部件实时展示 DVR 状态（无字段限制）
+    # 官方文档：https://gethomepage.dev/widgets/services/channelsdvrserver/
+    # ToDo
+
+    # Checkmk
+    # 企业级监控系统，小部件读取指定站点的「主机/服务状态」摘要
+    # 官方文档：https://gethomepage.dev/widgets/services/checkmk/
+    # ToDo
+
+    # Cloudflare Tunnels
+    # 通过 Cloudflare 边缘网络暴露本地服务，小部件显示隧道「状态 / 源站 IP」
+    # 官方文档：https://gethomepage.dev/widgets/services/cloudflared/
+    # ToDo
+
+    # Coin Market Cap
+    # 加密货币行情聚合，小部件轮播展示所选币种的「价格 / 7 日涨跌幅」
+    # 官方文档：https://gethomepage.dev/widgets/services/coin-market-cap/
+    # ToDo
+
+    # Crowdsec
+    # 开源 IPS / 威胁情报，小部件显示「告警数、封禁 IP 数」等（文档暂未抓取）
+    # 官方文档：https://gethomepage.dev/widgets/services/crowdsec/
+    # ToDo
+
+    # Custom API
+    # 万能占位符，允许你连接任意自建接口并渲染自定义数据（文档暂未抓取
+    # 官方文档：https://gethomepage.dev/widgets/services/customapi/
+    # ToDo
+
+# D
+    # Deluge
+    # BitTorrent 客户端，小部件实时显示「下载 / 上传 / 做种 / 吸血」速率
+    # 官方文档：https://gethomepage.dev/widgets/services/deluge/
+    # ToDo
+
+    # DeveLanCacheUI
+    # Steam/Origin 等游戏下载缓存管理后台，小部件展示缓存统计
+    # 官方文档：https://gethomepage.dev/widgets/services/develancacheui/
+    # ToDo
+
+    # Synology Disk Station
+    # 群晖 DSM，小部件展示「在线时长 / 卷可用空间 / CPU / 内存」
+    # 官方文档：https://gethomepage.dev/widgets/services/diskstation/
+    # ToDo
+
+    # Synology Download Station
+    # 群晖自带下载器，小部件显示「下载 / 上传 / 做种 / 上传」速率
+    # 官方文档：https://gethomepage.dev/widgets/services/downloadstation/
+    # ToDo
+
+# E
+    # Emby
+    # 自托管影音服务器，小部件展示「电影 / 剧集 / 歌曲 / 正在播放」信息
+    # 官方文档：https://gethomepage.dev/widgets/services/emby/
+    # ToDo
+
+    # ESPHome
+    # IoT 设备固件管理平台，小部件统计「总设备 / 在线 / 离线 / 未知」数量
+    # 官方文档：https://gethomepage.dev/widgets/services/esphome/
+    # ToDo
+
+    # EVCC
+    # 家庭光伏&电动车充电控制器，小部件实时显示「光伏功率 / 电网功率 / 家用功率 / 充电功率」
+    # 官方文档：https://gethomepage.dev/widgets/services/evcc/
+    # ToDo
+
+# F
+    # Filebrowser
+    # 在线文件管理器，小部件显示「可用 / 已用 / 总」磁盘空间
+    # 官方文档：https://gethomepage.dev/widgets/services/filebrowser/
+    # ToDo
+
+    # Fileflows
+    # 自动化媒体处理流水线，小部件展示「队列 / 处理中 / 已完成 / 耗时」
+    # 官方文档：https://gethomepage.dev/widgets/services/fileflows/
+    # ToDo
+
+    # Firefly III
+    # 自托管个人理财系统，小部件显示「净资产 / 预算」
+    # 官方文档：https://gethomepage.dev/widgets/services/firefly/
+    # ToDo
+
+    # Flood
+    # rTorrent 的现代化 Web 前端，小部件实时展示「下载 / 上传 / 做种 / 上传速率」
+    # 官方文档：https://gethomepage.dev/widgets/services/flood/
+    # ToDo
+
+    # FreshRSS
+    # 自托管 RSS 阅读器，小部件统计「订阅源数 / 未读文章」
+    # 官方文档：https://gethomepage.dev/widgets/services/freshrss/
+    # ToDo
+
+    # Frigate
+    # AI 本地 NVR 监控，小部件显示「摄像机数 / 运行时间 / 版本」并可列出最近事件
+    # 官方文档：https://gethomepage.dev/widgets/services/frigate/
+    # ToDo
+
+    # FRITZ!Box
+    # 德国家用路由器，小部件实时显示「在线状态 / 上下行速率 / 公网 IP」
+    # 官方文档：https://gethomepage.dev/widgets/services/fritzbox/
+    # ToDo
+
+# G
+    # GameDig
+    # 通用游戏服务器查询库，小部件展示「状态 / 地图 / 在线人数 / 延迟」等
+    # 官方文档：https://gethomepage.dev/widgets/services/gamedig/
+    # ToDo
+
+    # Gatus
+    # 轻量级服务可用性监控，小部件展示「在线 / 离线 / 可用率」汇总
+    # 官方文档：https://gethomepage.dev/widgets/services/gatus/
+    # ToDo
+
+    # Ghostfolio
+    # 自托管投资组合跟踪，小部件显示「当日 / 1 年 / 总」收益百分比
+    # 官方文档：https://gethomepage.dev/widgets/services/ghostfolio/
+    # ToDo
+
+    # Gitea
+    # 轻量级自建 Git 服务；小部件实时展示「仓库数 / 通知 / Issue / PR」概览
+    # 官方文档：https://gethomepage.dev/widgets/services/gitea/
+    # ToDo
+
+    # Gitlab
+    # 企业级 DevOps 平台；小部件显示「事件 / Issue / 合并请求 / 项目」统计
+    # 官方文档：https://gethomepage.dev/widgets/services/gitlab/
+    # ToDo
+
+    # Glances
+    # 跨平台系统资源监视器；小部件可切换显示「CPU、内存、网络、磁盘、温度、GPU、容器」等任意指标
+    # 官方文档：https://gethomepage.dev/widgets/services/glances/
+    # ToDo
+
+    # Gluetun
+    # 轻量级 VPN 客户端容器；小部件展示「出口公网 IP / 地区 / 国家」
+    # 官方文档：https://gethomepage.dev/widgets/services/gluetun/
+    # ToDo
+
+    # Gotify
+    # 自建推送通知网关；小部件统计「应用数 / 客户端数 / 消息总数」
+    # 官方文档：https://gethomepage.dev/widgets/services/gotify/
+    # ToDo
+
+    # Grafana
+    # 可视化监控大盘；小部件显示「仪表盘数 / 数据源数 / 告警总数 / 已触发告警」
+    # 官方文档：https://gethomepage.dev/widgets/services/grafana/
+    # ToDo
+
+# H
+    # HDHomerun
+    # 网络电视调谐器；小部件实时显示「频道数 / 信号强度 / 码率 / 当前节目」等信息
+    # 官方文档：https://gethomepage.dev/widgets/services/hdhomerun/
+    # ToDo
+
+    # Headscale
+    # 自建 WireGuard VPN 控制器（Tailscale 兼容）；小部件展示指定节点的「名称 / 地址 / 在线状态 / 最后在线」
+    # 官方文档：https://gethomepage.dev/widgets/services/headscale/
+    # ToDo
+
+    # Health checks
+    # 轻量级心跳监控服务；小部件显示「单个检查状态」或「全部检查的 up/down 汇总」
+    # 官方文档：https://gethomepage.dev/widgets/services/healthchecks/
+    # ToDo
+
+# I
+    # iFrame
+    # 万能内嵌框架；小部件把任意网页直接嵌入 Homepage 卡片区域
+    # 官方文档：https://gethomepage.dev/widgets/services/iframe/
+    # ToDo
+
+    # Immich
+    # 自托管 Google Photos 替代；小部件展示「用户数 / 照片数 / 视频数 / 已用存储」
+    # 官方文档：https://gethomepage.dev/widgets/services/immich/
+    # ToDo
+
+# J
+    # Jackett
+    # 索引器聚合器；小部件显示「已配置索引器 / 出错索引器」
+    # 官方文档：https://gethomepage.dev/widgets/services/jackett/
+    # ToDo
+
+    # JDownloader
+    # 多线程下载器；小部件实时显示「队列任务数 / 已下载 / 剩余字节 / 当前速度」
+    # 官方文档：https://gethomepage.dev/widgets/services/jdownloader/
+    # ToDo
+
+    # Jellyfin
+    # 自托管影音服务器；小部件展示「电影 / 剧集 / 歌曲 / 正在播放」信息
+    # 官方文档：https://gethomepage.dev/widgets/services/jellyfin/
+    # ToDo
+
+    # Jellyseerr
+    # Jellyfin/Emby 的媒体请求门户；小部件显示「待审批 / 已批准 / 已可用」请求数
+    # 官方文档：https://gethomepage.dev/widgets/services/jellyseerr/
+    # ToDo
+
+    # Jellystat
+    # Jellyfin 统计面板；小部件统计最近 N 天内的「歌曲 / 电影 / 剧集 / 其他」播放次数
+    # 官方文档：https://gethomepage.dev/widgets/services/jellystat/
+    # ToDo
+
+# K
+    # Kavita
+    # 自托管漫画 & 电子书库；小部件显示「总系列数 / 总文件数」
+    # 官方文档：https://gethomepage.dev/widgets/services/kavita/
+    # ToDo
+
+    # Komga
+    # 轻量级漫画服务器；小部件展示「库 / 系列 / 书籍」数量
+    # 官方文档：https://gethomepage.dev/widgets/services/komga/
+    # ToDo
+
+    # Komodo
+    # 容器/栈管理平台；小部件显示「容器总/运行/停止/异常」或「服务器/栈/容器」概览
+    # 官方文档：https://gethomepage.dev/widgets/services/komodo/
+    # ToDo
+
+    # Kopia
+    # 增量备份工具；小部件展示「状态 / 备份大小 / 上次/下次运行」
+    # 官方文档：https://gethomepage.dev/widgets/services/kopia/
+    # ToDo
+
+# L
+    # Lidarr
+    # 音乐自动管理器；小部件显示「缺失专辑 / 排队 / 艺术家」统计
+    # 官方文档：https://gethomepage.dev/widgets/services/lidarr/
+    # ToDo
+
+    # Linkwarden
+    # 自托管书签存档；小部件展示「链接 / 收藏夹 / 标签」数量
+    # 官方文档：https://gethomepage.dev/widgets/services/linkwarden/
+    # ToDo
+
+    # LubeLogger
+    # 汽车保养记录；小部件显示「车辆数 / 保养记录 / 提醒」或单车详情
+    # 官方文档：https://gethomepage.dev/widgets/services/lubelogger/
+    # ToDo
+
+# M
+    # Mastodon
+    # 联邦社交平台；小部件展示实例的「用户数 / 嘟文数 / 域名数」
+    # 官方文档：https://gethomepage.dev/widgets/services/mastodon/
+    # ToDo
+
+    # Mailcow
+    # 全套邮件服务器；小部件显示「域名 / 邮箱 / 邮件数 / 存储」
+    # 官方文档：https://gethomepage.dev/widgets/services/mailcow/
+    # ToDo
+
+    # Mealie
+    # 食谱管理器；小部件展示「食谱 / 用户 / 分类 / 标签」数量
+    # 官方文档：https://gethomepage.dev/widgets/services/mealie/
+    # ToDo
+
+    # Medusa
+    # 自动剧集下载管理器；小部件显示「缺失 / 排队 / 已收录剧集」
+    # 官方文档：https://gethomepage.dev/widgets/services/medusa/
+    # ToDo
+
+    # Mikrotik
+    # 路由器/交换机管理；小部件实时展示「在线时长 / CPU 负载 / 内存 / DHCP 租约数」
+    # 官方文档：https://gethomepage.dev/widgets/services/mikrotik/
+    # ToDo
+
+    # Minecraft
+    # 游戏服务器；小部件显示「在线玩家 / 版本 / 运行状态」
+    # 官方文档：https://gethomepage.dev/widgets/services/minecraft/
+    # ToDo
+
+    # Miniflux
+    # 极简 RSS 阅读器；小部件统计「未读 / 已读」文章
+    # 官方文档：https://gethomepage.dev/widgets/services/miniflux/
+    # ToDo
+
+    # MJPEG
+    # 纯 MJPEG 视频流；小部件把摄像头实时画面嵌进卡片
+    # 官方文档：https://gethomepage.dev/widgets/services/mjpeg/
+    # ToDo
+
+    # Moonraker (Klipper)
+    # Klipper 3D 打印机后端；小部件展示「打印状态 / 进度 / 层数」
+    # 官方文档：https://gethomepage.dev/widgets/services/moonraker/
+    # ToDo
+
+    # Mylar3
+    # 漫画自动下载器；小部件显示「系列 / 期刊 / 待补期」
+    # 官方文档：https://gethomepage.dev/widgets/services/mylar/
+    # ToDo
+
+    # MySpeed
+    # 自建网速测试；小部件实时显示「延迟 / 下载 / 上传」
+    # 官方文档：https://gethomepage.dev/widgets/services/myspeed/
+    # ToDo
+
+# N
+    # Navidrome
+    # 自托管音乐流媒体；小部件显示「歌曲 / 专辑 / 艺术家」等统计
+    # 官方文档：https://gethomepage.dev/widgets/services/navidrome/
+    # ToDo
+
+    # NetAlertX
+    # 网络设备发现与告警；小部件汇总「总数 / 在线 / 新设备 / 离线告警」
+    # 官方文档：https://gethomepage.dev/widgets/services/netalertx/
+    # ToDo
+
+    # Netdata
+    # 实时性能监控；小部件展示系统、容器、应用的实时指标
+    # 官方文档：https://gethomepage.dev/widgets/services/netdata/
+    # ToDo
+
+    # Nextcloud
+    # 自建云盘 & 协作平台；小部件显示「用户数 / 文件数 / 存储量」
+    # 官方文档：https://gethomepage.dev/widgets/services/nextcloud/
+    # ToDo
+
+    # NextDNS
+    # 云端 DNS 过滤服务；小部件展示「查询量 / 拦截量」
+    # 官方文档：https://gethomepage.dev/widgets/services/nextdns/
+    # ToDo
+
+    # Nginx Proxy Manager
+    # 图形化反向代理管理；小部件显示「代理主机 / SSL 证书 / 在线状态」
+    # 官方文档：https://gethomepage.dev/widgets/services/nginx-proxy-manager/
+    # ToDo
+
+    # NZBget
+    # Usenet 下载器；小部件实时显示「下载 / 上传 / 队列进度」
+    # 官方文档：https://gethomepage.dev/widgets/services/nzbget/
+    # ToDo
+
+# O
+    # OctoPrint
+    # 3D 打印机 Web 控制平台，小部件显示打印进度、温度等
+    # 官方文档：https://gethomepage.dev/widgets/services/octoprint/
+    # ToDo
+
+    # Omada
+    # TP-Link Omada SDN 控制器，小部件展示 AP/交换机在线状态
+    # 官方文档：https://gethomepage.dev/widgets/services/omada/
+    # ToDo
+
+    # Ombi
+    # Plex/Emby 媒体请求系统，小部件显示待处理/已批准请求
+    # 官方文档：https://gethomepage.dev/widgets/services/ombi/
+    # ToDo
+
+    # OpenDTU
+    # 读取 Hoymiles 光伏逆变器实时发电量
+    # 官方文档：https://gethomepage.dev/widgets/services/opendtu/
+    # ToDo
+
+    # OpenMediaVault
+    # NAS 管理面板，小部件显示存储/服务状态
+    # 官方文档：https://gethomepage.dev/widgets/services/openmediavault/
+    # ToDo
+
+    # OpenWRT
+    # 路由器固件，小部件展示系统负载、内存、流量
+    # 官方文档：https://gethomepage.dev/widgets/services/openwrt/
+    # ToDo
+
+    # OPNSense
+    # 防火墙系统，小部件展示接口状态、流量、规则命中
+    # 官方文档：https://gethomepage.dev/widgets/services/opnsense/
+    # ToDo
+
+    # Overseerr
+    # Plex/Emby 请求门户，小部件显示媒体请求统计
+    # 官方文档：https://gethomepage.dev/widgets/services/overseerr/
+    # ToDo
+
+# P
+    # Paperless-ngx
+    # 无纸化文档管理，小部件显示文档/标签/对应人数量
+    # 官方文档：https://gethomepage.dev/widgets/services/paperlessngx/
+    # ToDo
+
+    # PeaNUT
+    # UPS 网络监控，小部件实时显示电量、负载、剩余时间
+    # 官方文档：https://gethomepage.dev/widgets/services/peanut/
+    # ToDo
+
+    # pfSense
+    # 防火墙系统，功能同 OPNsense
+    # 官方文档：https://gethomepage.dev/widgets/services/pfsense/
+    # ToDo
+
+    # PhotoPrism
+    # AI 照片管理，小部件显示照片/视频/人脸/地点统计
+    # 官方文档：https://gethomepage.dev/widgets/services/photoprism/
+    # ToDo
+
+    # PiHole
+    # 网络级 DNS 广告屏蔽，小部件显示查询/阻断量
+    # 官方文档：https://gethomepage.dev/widgets/services/pihole/
+    # ToDo
+
+    # Plant-it
+    # 植物养护记录，小部件展示植物/浇水/提醒数
+    # 官方文档：https://gethomepage.dev/widgets/services/plantit/
+    # ToDo
+
+    # Tautulli (Plex)
+    # Plex 深度统计，小部件显示播放时长、用户活跃度
+    # 官方文档：https://gethomepage.dev/widgets/services/plex-tautulli/
+    # ToDo
+
+    # Plex
+    # 媒体服务器，小部件显示电影/剧集/歌曲/正在播放
+    # 官方文档：https://gethomepage.dev/widgets/services/plex/
+    # ToDo
+
+    # Portainer
+    # Docker/K8s 图形化管理，小部件显示容器/堆栈/镜像统计
+    # 官方文档：https://gethomepage.dev/widgets/services/portainer/
+    # ToDo
+
+    # Prometheus
+    # 指标收集系统，小部件展示报警/数据源/仪表盘数量
+    # 官方文档：https://gethomepage.dev/widgets/services/prometheus/
+    # ToDo
+
+    # Prometheus Metric
+    # 任意 Prometheus 指标值直接嵌入卡片
+    # 官方文档：https://gethomepage.dev/widgets/services/prometheusmetric/
+    # ToDo
+
+    # Prowlarr
+    # 索引器聚合管理，小部件显示索引器状态/错误
+    # 官方文档：https://gethomepage.dev/widgets/services/prowlarr/
+    # ToDo
+
+    # Proxmox
+    # 虚拟化平台，小部件显示节点、虚拟机、容器、存储
+    # 官方文档：https://gethomepage.dev/widgets/services/proxmox/
+    # ToDo
+
+    # Proxmox Backup Server
+    # 备份仓库，小部件显示备份任务/大小/状态
+    # 官方文档：https://gethomepage.dev/widgets/services/proxmoxbackupserver/
+    # ToDo
+
+    # Pterodactyl
+    # 游戏服务器面板，小部件显示服务器/节点/玩家数
+    # 官方文档：https://gethomepage.dev/widgets/services/pterodactyl/
+    # ToDo
+
+    # Pyload
+    # 轻量级下载器，小部件实时显示下载/上传/队列
+    # 官方文档：https://gethomepage.dev/widgets/services/pyload/
+    # ToDo
+
+# Q
+    # qBittorrent
+    # BT/磁力客户端，小部件显示种子/速度/做种信息
+    # 官方文档：https://gethomepage.dev/widgets/services/qbittorrent/
+    # ToDo
+
+    # QNAP
+    # 品牌 NAS 系统，小部件展示系统/存储/服务状态
+    # 官方文档：https://gethomepage.dev/widgets/services/qnap/
+    # ToDo
+
+# R
+    # Radarr
+    # 电影自动管理，小部件显示缺失/已收录/排队电影
+    # 官方文档：https://gethomepage.dev/widgets/services/radarr/
+    # ToDo
+
+    # Readarr
+    # 电子书自动管理，功能同 Radarr
+    # 官方文档：https://gethomepage.dev/widgets/services/readarr/
+    # ToDo
+
+    # Romm
+    # 复古游戏 ROM 管理，小部件展示 ROM/平台/收藏数
+    # 官方文档：https://gethomepage.dev/widgets/services/romm/
+    # ToDo
+
+    # ruTorrent
+    # rTorrent Web 前端，小部件显示种子/速度/做种
+    # 官方文档：https://gethomepage.dev/widgets/services/rutorrent/
+    # ToDo
+
+# S
+    # SABnzbd
+    # Usenet 下载器，小部件实时显示下载/上传/队列
+    # 官方文档：https://gethomepage.dev/widgets/services/sabnzbd/
+    # ToDo
+
+    # Scrutiny
+    # 硬盘 S.M.A.R.T 监控，小部件显示故障/预警盘数
+    # 官方文档：https://gethomepage.dev/widgets/services/scrutiny/
+    # ToDo
+
+    # Slskd
+    # Soulseek P2P 客户端，小部件显示上传/下载/队列
+    # 官方文档：https://gethomepage.dev/widgets/services/slskd/
+    # ToDo
+
+    # Sonarr
+    # 剧集自动管理，小部件显示缺失/已收录/排队剧集
+    # 官方文档：https://gethomepage.dev/widgets/services/sonarr/
+    # ToDo
+
+    # Speedtest Tracker
+    # 周期性测速，小部件展示延迟/上下行历史曲线
+    # 官方文档：https://gethomepage.dev/widgets/services/speedtest-tracker/
+    # ToDo
+
+    # Stash
+    # 成人内容媒体库，小部件显示影片/演员/标签统计
+    # 官方文档：https://gethomepage.dev/widgets/services/stash/
+    # ToDo
+
+    # Stocks
+    # 股票行情小部件，已在前文说明
+    # 官方文档：https://gethomepage.dev/widgets/services/stocks/
+    # ToDo
+
+    # SWAG Dashboard
+    # SWAG 反向代理统计，小部件显示代理/证书状态
+    # 官方文档：https://gethomepage.dev/widgets/services/swagdashboard/
+    # ToDo
+
+    # Syncthing Relay Server
+    # 中继节点状态，小部件显示连接/流量
+    # 官方文档：https://gethomepage.dev/widgets/services/syncthing-relay-server/
+    # ToDo
+
+# T
+    # Tailscale
+    # 零配置 VPN，小部件显示节点/在线/离线
+    # 官方文档：https://gethomepage.dev/widgets/services/tailscale/
+    # ToDo
+
+    # Tandoor
+    # 开源菜谱管理，小部件展示食谱/食材/收藏数
+    # 官方文档：https://gethomepage.dev/widgets/services/tandoor/
+    # ToDo
+
+    # Technitium DNS Server
+    # 自建 DNS 服务器，小部件显示查询/缓存/阻断
+    # 官方文档：https://gethomepage.dev/widgets/services/technitium/
+    # ToDo
+
+    # Tdarr
+    # 分布式转码队列，小部件显示队列/完成/失败任务
+    # 官方文档：https://gethomepage.dev/widgets/services/tdarr/
+    # ToDo
+
+    # Traefik
+    # 云原生反向代理，小部件显示路由/证书/服务健康
+    # 官方文档：https://gethomepage.dev/widgets/services/traefik/
+    # ToDo
+
+    # Transmission
+    # BT 客户端，小部件显示种子/速度/做种
+    # 官方文档：https://gethomepage.dev/widgets/services/transmission/
+    # ToDo
+
+    # Trilium
+    # 层级化笔记系统，小部件显示笔记/标签/附件
+    # 官方文档：https://gethomepage.dev/widgets/services/trilium/
+    # ToDo
+
+    # TrueNas
+    # 企业级存储系统，小部件显示池/数据集/服务状态
+    # 官方文档：https://gethomepage.dev/widgets/services/truenas/
+    # ToDo
+
+    # Tube Archivist
+    # YouTube 自托管存档，小部件显示频道/视频/下载进度
+    # 官方文档：https://gethomepage.dev/widgets/services/tubearchivist/
+    # ToDo
+
+# U
+    # Unifi Controller
+    # 网络设备集中管理，已在前文说明
+    # 官方文档：https://gethomepage.dev/widgets/services/unifi-controller/
+    # ToDo
+
+    # Unmanic
+    # 自动化媒体转码，小部件显示转码队列/完成/失败
+    # 官方文档：https://gethomepage.dev/widgets/services/unmanic/
+    # ToDo
+
+    # Uptime Kuma
+    # 网站/服务可用性监控，小部件显示在线/离线/可用率
+    # 官方文档：https://gethomepage.dev/widgets/services/uptime-kuma/
+    # ToDo
+
+    # UptimeRobot
+    # 云端可用性监控，功能同上
+    # 官方文档：https://gethomepage.dev/widgets/services/uptimerobot/
+    # ToDo
+
+    # UrBackup
+    # 客户端备份服务器，小部件显示备份/镜像/存储占用
+    # 官方文档：https://gethomepage.dev/widgets/services/urbackup/
+    # ToDo
+
+# V
+    # Vikunja
+    # 开源任务管理，小部件显示任务/项目/标签统计
+    # 官方文档：https://gethomepage.dev/widgets/services/vikunja/
+    # ToDo
+
+# W
+    # Wallos
+    # 订阅与账单追踪，小部件显示订阅/到期提醒/总支出
+    # 官方文档：https://gethomepage.dev/widgets/services/wallos/
+    # ToDo
+
+    # Watchtower
+    # 容器镜像自动更新，小部件显示更新检查/成功/失败
+    # 官方文档：https://gethomepage.dev/widgets/services/watchtower/
+    # ToDo
+
+    # Wg-Easy
+    # WireGuard 简易管理面板，小部件显示客户端/在线/离线
+    # 官方文档：https://gethomepage.dev/widgets/services/wgeasy/
+    # ToDo
+
+    # What's Up Docker
+    # 容器健康检查汇总，小部件显示运行/异常/重启次数
+    # 官方文档：https://gethomepage.dev/widgets/services/whatsupdocker/
+    # ToDo
+
+# X
+    # Xteve
+    # IPTV 代理与 EPG 管理，小部件显示映射频道/源状态
+    # 官方文档：https://gethomepage.dev/widgets/services/xteve/
+    # ToDo
+
+# Z
+    # Zabbix
+    # 企业级监控平台，小部件显示主机/触发器/告警统计
+    # 官方文档：https://gethomepage.dev/widgets/services/zabbix/
+    # ToDo

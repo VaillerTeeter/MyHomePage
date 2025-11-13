@@ -1,0 +1,15 @@
+# Proxmox 集成设置
+# ToDo
+
+# 配置连接
+# url: https://proxmox.host:8006
+# token: api@pam!homepage
+# secret: your-secret
+
+# 配置服务
+# - HomeAssistant:
+#     icon: home-assistant.png
+#     href: http://homeassistant.local
+#     description: Home automation
+#     proxmoxNode: pve
+#     proxmoxVMID: 101

@@ -1,0 +1,23 @@
+# K8s 集成设置
+# ToDo
+
+# 启用模式
+# mode: default  # 或 cluster（使用 service account）
+# ingress: true
+# traefik: true
+# gateway: true
+
+# 手动配置服务
+# - Emby:
+#     icon: emby.png
+#     href: http://emby.home
+#     namespace: media
+#     app: emby
+
+# 自动发现（通过 Ingress 注解）
+# annotations:
+#   gethomepage.dev/enabled: "true"
+#   gethomepage.dev/name: Emby
+#   gethomepage.dev/group: Media
+#   gethomepage.dev/icon: emby.png
+#   gethomepage.dev/widget.type: emby

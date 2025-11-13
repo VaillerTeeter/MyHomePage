@@ -1,0 +1,24 @@
+# Docker 集成设置
+# ToDo
+
+# 本地 Docker
+# my-docker:
+#   socket: /var/run/docker.sock
+
+# 远程 Docker（需开启 TCP API）
+# my-docker:
+#   host: 192.168.1.100
+#   port: 2375
+
+# Docker Socket 代理（推荐）
+# my-docker:
+#   host: dockerproxy
+#   port: 2375
+
+# 自动服务发现（通过容器 label）
+# labels:
+#   - homepage.group=Media
+#   - homepage.name=Emby
+#   - homepage.icon=emby.png
+#   - homepage.href=http://emby.home/
+#   - homepage.description=Media Server

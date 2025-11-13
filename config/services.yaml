@@ -1,0 +1,174 @@
+# 大的卡片设置
+# ToDo
+
+# # 基本结构
+# - Group A:
+#     # 卡片
+#     - Service A:
+#         # 图标
+#         icon: sonarr.png
+#         # 跳转链接
+#         href: http://sonarr.host
+#         # 描述文字
+#         description: Series management
+#         # 可 ping 主机，显示在线状态
+#         ping: sonarr.host
+#         # 小部件配置（如 Emby、Radarr、Uptime Kuma 等）
+#         widget:
+#           type: sonarr
+#           url: http://sonarr.host
+#           key: yourapikey
+#         # server	关联 docker.yaml 中的 Docker 实例
+#         # container	Docker 容器名称
+
+# # 嵌套组示例
+# - Group A:
+#     - Service A:
+#         href: http://localhost
+#     - Group B:
+#         - Service B:
+#             href: http://localhost
+
+- Company:
+    - 权限 & 工作流:
+        - 易链:
+            icon: /icons/company-elink.png
+            href: https://elink.thundersoft.com/
+            ping: elink.thundersoft.com
+        - 集团工作平台:
+            icon: /icons/company.ico
+            href: http://i.thundersoft.com/
+            ping: i.thundersoft.com
+    - Code:
+        - OpenGrok:
+            icon: /icons/company-opengrok.png
+            href: http://192.168.6.247:8080/source/
+            ping: 192.168.6.247
+        - Gerrit:
+            icon: /icons/company-gerrit.ico
+            href: http://10.0.232.2/gerrit/dashboard/self
+            ping: 10.0.232.2
+        - Jenkins:
+            icon: /icons/company-jenkins.svg
+            href: http://10.0.54.250:8080/
+            ping: 10.0.54.250
+    - 资料:
+        - 高通文档:
+            icon: /icons/company-qualcomm.png
+            href: https://createpoint.qti.qualcomm.com/chipcenter/#search/global/searchArgs/rows||10||sortField||score||sortOrder||desc||fq_facetChipsets||QAM8295P
+            ping: createpoint.qti.qualcomm.com
+        - 飞书个性签名:
+            icon: /icons/company-documents.png
+            href: https://ituhdo1hkk.feishu.cn/docx/Lw0xdER0qoExN3xgP7Fc9AItnob
+            ping: ituhdo1hkk.feishu.cn
+
+- Anime & movie:
+    - 资讯:
+        - 新番表:
+            icon: /icons/anime-new_anime.ico
+            href: https://acgsecrets.hk/
+            ping: acgsecrets.hk
+        - 萌娘百科:
+            icon: /icons/anime-meng.ico
+            href: https://zh.moegirl.org.cn/
+            ping: zh.moegirl.org.cn
+    - Anime:
+        - SubsPlease:
+            icon: /icons/anime-subsplease.ico
+            href: https://subsplease.org/
+            ping: subsplease.org
+        - 漫猫动漫:
+            icon: /icons/anime-comicat.ico
+            href: http://3.comicat.115000.xyz/
+            ping: 3.comicat.115000.xyz
+        - VCB-Studio:
+            icon: /icons/anime-vcb.png
+            href: https://vcb-s.com/
+            ping: vcb-s.com
+        - NYAA:
+            icon: /icons/anime-nyaa.png
+            href: https://nyaa.si/
+            ping: nyaa.si
+        - ACG:
+            icon: /icons/anime-acg.ico
+            href: https://acg.rip/
+            ping: acg.rip
+        - 东京图书馆:
+            icon: /icons/anime-tokyo.png
+            href: https://tokyo-tosho.net/
+            ping: tokyo-tosho.net
+    - 字幕:
+        - OpenSubTitles:
+            icon: /icons/anime-opensubtitles.ico
+            href: https://www.opensubtitles.org/
+            ping: www.opensubtitles.org
+
+- Cloud Server:
+    - Tools:
+        - DNS 解析:
+            icon: /icons/cloud-dns.ico
+            href: https://dnsnext.console.aliyun.com/authoritative/domains/vaciller.top
+            ping: dnsnext.console.aliyun.com
+        - SSL 证书:
+            icon: /icons/cloud-ssl.png
+            href: https://console.cloud.tencent.com/ssl
+            ping: console.cloud.tencent.com
+    - Docker:
+        - CasaOS:
+            icon: /icons/docker-casaos.png
+            href: https://casaos.vaciller.top/
+            ping: casaos.vaciller.top
+        - Grafana:
+            icon: /icons/docker-grafana.png
+            href: https://grafana.vaciller.top/
+            ping: grafana.vaciller.top
+    - 资源收集:
+        - Prometheus:
+            icon: /icons/docker-prometheus.svg
+            href: https://prometheus.vaciller.top/
+            ping: prometheus.vaciller.top
+        - Node-Exporter:
+            icon: /icons/docker-node-exporter.png
+            href: https://node-exporter.vaciller.top/
+            ping: node-exporter.vaciller.top
+        - cAdvisor:
+            icon: /icons/docker-cadvisor.png
+            href: https://cadvisor.vaciller.top/
+            ping: cadvisor.vaciller.top
+
+- DailyKit:
+    - Code:
+        - github:
+            icon: /icons/code-github.png
+            href: https://github.com/VaillerTeeter?tab=repositories
+            ping: github.com
+    - AI:
+        - Kimi:
+            icon: /icons/ai-kimi.ico
+            href: https://www.kimi.com/
+            ping: www.kimi.com
+        - DeepSeek:
+            icon: /icons/ai-deepseek.png
+            href: https://chat.deepseek.com/
+            ping: chat.deepseek.com
+    - Money:
+        - Paypal:
+            icon: /icons/money-paypal.ico
+            href: https://www.paypal.com/
+            ping: www.paypal.com
+    - Computer:
+        - Office Tool Plus:
+            icon: /icons/computer-office.ico
+            href: https://otp.landian.vip/
+            ping: otp.landian.vip
+        - 系统镜像:
+            icon: /icons/computer-image.ico
+            href: https://next.itellyou.cn/
+            ping: next.itellyou.cn
+        - VPN-雷霆:
+            icon: /icons/computer-leiting.ico
+            href: https://vopqaq93yh4b.ltltltltltltlt.top/
+            ping: vopqaq93yh4b.ltltltltltltlt.top
+
+
+
