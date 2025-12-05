@@ -1,88 +1,310 @@
-# 全局配置
+# 修改此文件后，需要点击页面右下角的刷新图标重新生成静态 HTML 才能生效
 
-# 页面基础设置
-# 标题
+# 基础页面设置
+# ----------------------------------------------------------------------------------------------------
+# 标题与描述
+# ==================================================
+# 自定义页面标题
 title: Vaciller's Homepage
-# 自定义页面的描述
+# 自定义页面描述
 description: Vaciller's private homepage
-# 起始 URL
-startUrl: https://homepage.vaciller.top/
-# 网站图标
+# 自定义 favicon（支持 URL 或本地路径）
 favicon: /images/homepage_logo.png
-# 语言
-# ca, de, en, es, fr, he, hr, hu, it, nb-NO, nl, pt, ru, sv, vi, zh-CN, zh-Hant
+# URL
+# ==================================================
+# 起始 URL，用于可安装应用的启动地址，默认值为 /
+startUrl: https://homepage.vaciller.top/
+# 基础 URL，在反向代理配置中可能需要设置文档的基础 URL（必须是完整的绝对 URL）
+base: https://homepage.vaciller.top/homepage
+# 语言设置
+# ==================================================
+# 支持：ca, de, en, es, fr, he, hr, hu, it, nb-NO, nl, pt, ru, sv, vi, zh-CN, zh-Hant
 language: en
-# 主题，配置后将禁用主题切换 dark light
-theme: dark
-# 调色板，配置后将禁用调色板调色
-# slate, gray, zinc, neutral, stone, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose, red, white
-color: slate
 
-# 背景与样式
-# 背景图片
+# 背景图片设置
+# ----------------------------------------------------------------------------------------------------
+# 基本背景图片
+# ==================================================
+# Note:
+#   - 添加新图片时需要重启容器（Next.js 静态站点服务器的限制）
+#   - 不要将整个 /app/public/ 目录进行绑定挂载
+# 方式一：使用完整 URL
+# background: https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80
+# 方式二：使用本地图片（相对于 /app/public 目录）
+# background: /images/background.png
+# 背景滤镜与透明度
+# ==================================================
+# Note:
+#   - 用了这个就不用上面的那个
 background:
-  image: /images/background.png
-  # 背景毛玻璃效果
-  # blur: sm # see https://tailwindcss.com/docs/backdrop-blur
-  # 饱和度设置
-  saturate: 200 # see https://tailwindcss.com/docs/backdrop-saturate
-  # 亮度设置
-  brightness: 100 # see https://tailwindcss.com/docs/backdrop-brightness
-  # 不透明度，0-100
+  image: https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80
+  # 模糊，背景毛玻璃效果：sm, "", md, xl... 参见 https://tailwindcss.com/docs/backdrop-blur
+  blur: sm
+  # 饱和度：0, 50, 100... 参见 https://tailwindcss.com/docs/backdrop-saturate
+  saturate: 200
+  # 亮度：0, 50, 75... 参见 https://tailwindcss.com/docs/backdrop-brightness
+  brightness: 100
+  # 透明度：0-100（与背景色混合）
   opacity: 100
-# 卡片背景毛玻璃效果
-cardBlur: sm # see https://tailwindcss.com/docs/backdrop-blur
-# 使页面更宽
+# 卡片模糊效果
+# ==================================================
+# Note:
+#   - 此选项与背景的 blur/saturate/brightness 滤镜不兼容
+# 卡片背景毛玻璃效果：xs, md 等... 参见 https://tailwindcss.com/docs/backdrop-blur
+cardBlur: sm
+
+# 主题与外观
+# ----------------------------------------------------------------------------------------------------
+# 固定主题
+# ==================================================
+# 主题，配置后将禁用主题切换、
+# 可选值：dark, light
+theme: dark
+# 固定配色
+# ==================================================
+# 调色板，配置后将禁用调色板调色，强制使用指定配色
+# 支持：slate, gray, zinc, neutral, stone, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose, red, white
+color: slate
+# 图标样式
+# ==================================================
+# 可选：theme（扁平，适配主题色）或 gradient（默认，渐变效果）
+iconStyle: theme
+# 标题样式
+# ==================================================
+# 头部样式
+# 支持 4 种标题样式（默认为 underlined）
+# # 可选：underlined/boxed/clean/boxedWidgets
+headerStyle: boxedWidgets
+# 区块高亮等级
+# ==================================================
+# ToDo:
+# 覆盖 widget 高亮规则（good, warn, danger）的默认 Tailwind 类
+# blockHighlights:
+#   levels:
+#     good: "bg-emerald-500/40 text-emerald-950 dark:bg-emerald-900/60 dark:text-emerald-400"
+#     warn: "bg-amber-300/30 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200"
+#     danger: "bg-rose-700/45 text-rose-200 dark:bg-rose-950/70 dark:text-rose-400"
+
+# 布局设置（核心功能）
+# ----------------------------------------------------------------------------------------------------
+# 基本布局
+# ==================================================
+# ToDo:
+# 为服务组和书签组配置列或行布局
+# layout:
+#   Media:
+#     # 可选：row（行布局）或默认的 column（列布局）
+#     style: row
+#     # 列数
+#     columns: 4
+# 仅图标布局（书签）
+# ==================================================
+# ToDo:
+# layout:
+#   Media:
+#     # 书签仅显示图标
+#     iconsOnly: true
+# 全局设置
+# ==================================================
+# ToDo:
+# layout:
+#   Media:
+#     # 本地图片
+#     icon: home-assistant.png
+#   Server Tools:
+#     # URL 图片
+#     icon: https://cdn-icons-png.flaticon.com/512/252/252035.png
+# 标签页视图
+# 只有为至少一个组设置了 tab 字段时，标签页功能才会激活
+# 直接访问标签：在 URL 末尾添加 #Group（组名小写并经过 URI 编码）
+# ToDo:
+# layout:
+#   # 第一个标签页
+#   Bookmark Group on First Tab:
+#     tab: First
+#   First Service Group:
+#     tab: First
+#     style: row
+#     columns: 4
+# 
+#   # 第二个标签页
+#   Second Service Group:
+#     tab: Second
+#     columns: 4
+# 
+#   # 显示在所有标签页
+#   Service Group on every Tab:
+#     style: row
+#     columns: 4
+# 排序与混合
+# ==================================================
+# Note:
+#   - 服务组和书签组的排序基于 layout 块中的顺序
+#   - 可以使用不同的组名混合 Docker 标签自动发现组和手动配置组
+#   - 不要为服务组和书签组使用相同名称，否则可能导致书签组被隐藏
+# ToDo:
+# layout:
+#   - Auto-Discovered1:
+#   - Configured1:
+#   - Configured2:
+#   - Auto-Discovered2:
+#   - Configured3:
+#       style: row
+#       columns: 3
+# 嵌套组
+# ==================================================
+# ToDo:
+# layout:
+#   Group A:
+#     style: row
+#     columns: 4
+#   Group C:
+#     style: row
+#     columns: 2
+#     Nested Group A:
+#       style: row
+#       columns: 2
+#     Nested Group B:
+#       style: row
+#       columns: 2
+# 隐藏组标题
+# ==================================================
+# ToDo:
+# layout:
+#   Section A:
+#     header: false
+# 全宽布局
+# ==================================================
+# 使主页占据整个窗口宽度
 fullWidth: true
 # 最大组列数
-# 设置较大屏幕尺寸上组的最大列数（仅适用于：style: columns，stle: row 的不受限制）
-# 默认的：services：4，bookmarks：6，MAX：8
+# ==================================================
+# 设置大屏幕上的最大组列数（仅适用于默认 style: columns，不适用于 style: row）
+# 默认服务 4，书签 6，最大 8，最小 5
 maxGroupColumns: 5
-# 启用 services 和 bookmarks 的可折叠功能
+# 书签组单独设置，最大 8
+maxBookmarkGroupColumns: 6
+# 可折叠组
+# ==================================================
+# 全局禁用可折叠功能（默认启用）
 disableCollapse: false
-# 初始折叠设置
+# 初始折叠状态，单独为每个组设置
+# ToDo:
+# layout:
+#   Section A:
+#     initiallyCollapsed: true
+# 全局初始折叠，默认禁用
 groupsInitiallyCollapsed: false
-# 等高卡片设置
+# 等高卡片
+# ==================================================
+# 等高卡片，单独为每个组设置
+# ToDo:
+# layout:
+#   Group Name:
+#     useEqualHeights: true
+# 全局等高卡片设置
 useEqualHeights: true
-# 头部样式
-# underlined/boxed/clean/boxedWidgets
-headerStyle: boxedWidgets
 
-# 快速搜索与行为
-# 点击卡片的页面弹出方式
-# _blank：新标签页
-# _self：当前页面
-# _top：新窗口
+# 链接行为
+# ----------------------------------------------------------------------------------------------------
+# 全局链接目标
+# ==================================================
+# 可选：_blank（新标签页）、_self（当前标签页）、_top（新窗口）
 target: _blank
-# 快速搜索，只要索小组件没有焦点，直接键入即可
-quicklaunch:
-  # 用于控制搜索中是否包含项目描述，默认情况下是 false，启用后，与项目名称匹配的结果将放置在仅与描述匹配的结果之上
-  searchDescriptions: true
-  # 禁用自动将当前选择的网络搜索（例如从小部件）作为快速启动选项，默认情况下是 false
-  hideInternetSearch: true
-  # 显示互联网搜索的搜索建议，如果未指定，则该设置将从搜索小部件继承，如果在那里也没有指定它，它将默认为 false，对于自定义提供程序，需要设置 suggestionUrl 才能使其正常工作
-  showSearchSuggestions: true
-  # 禁用检测并提供打开 URL 的选项，默认情况下是 false
-  hideVisitURL: true
-  # 搜索引擎提供商，如果未指定任何内容，它将尝试使用为搜索小部件设置的提供程序，如果两者都不存在，则将禁用互联网搜索
-  # google, duckduckgo, bing, baidu, brave or custom
-  provider: duckduckgo
+# 服务级链接目标
+# ==================================================
+# 服务级设置，优先级高于全局设置
+# ToDo:
+# - Example Service:
+#     href: https://example.com/
+#     target: _self
 
-# 状态显示样式
-# 隐藏版本信息
-hideVersion: true
-# 禁用从 GitHub 检查新版本（默认启用）
-disableUpdateCheck: true
-# 显示所有扩展的 Docker 统计信息
-showStats: true
-# 网址状态
-# dot：显示一个绿点，表示监控 ping 成功或正常状态
-# basic：显示 UP 或 DOWN 以进行监控和 ping
-statusStyle: "dot"
-# 隐藏小组件错误消息
-hideErrors: true
-
-# # API Keys
+# 服务提供商配置
+# ----------------------------------------------------------------------------------------------------
+# 在 providers 部分定义共享的 API 提供商选项和密钥，然后在 widget 配置中使用 provider 代替 apiKey
+# ToDo:
 # providers:
-#   openweathermap:
-#     apiKey: f0d6ca3c3143ebd728fd77697dcede94
+#   openweathermap: openweathermapapikey
+#   finnhub: yourfinnhubapikeyhere
+#   longhorn:
+#     url: https://longhorn.example.com
+#     username: admin
+#     password: LonghornPassword
+# 使用示例
+# - openweathermap:
+#     latitude: 50.449684
+#     longitude: 30.525026
+#     # 引用上面定义的 provider
+#     provider: openweathermap
+
+# 快速启动（Quick Launch）
+# ----------------------------------------------------------------------------------------------------
+# 通过键盘输入快速搜索服务、执行网页搜索或打开 URL
+# ==================================================
+quicklaunch:
+  # 搜索是否包含描述（默认 false）
+  searchDescriptions: true
+  # 隐藏网络搜索选项（默认 false）
+  hideInternetSearch: true
+  # 显示搜索建议（默认 false）
+  showSearchSuggestions: true
+  # 隐藏访问 URL 选项（默认 false）
+  hideVisitURL: true
+  # 移动端按钮位置：top-left, top-right, bottom-left, bottom-right（默认空，禁用）
+  mobileButtonPosition: top-left
+  # 搜索引擎
+  # 可选：google, duckduckgo, bing, baidu, brave, custom
+  provider: bing
+# 自定义搜索引擎
+# ==================================================
+# ToDo:
+# quicklaunch:
+#   provider: custom
+#   url: https://www.ecosia.org/search?q=
+#   target: _blank
+#   suggestionUrl: https://ac.ecosia.org/autocomplete?type=list&q=
+
+# 其他设置
+# ----------------------------------------------------------------------------------------------------
+# 版本与更新检查
+# ==================================================
+# 隐藏页面底部版本号
+hideVersion: true
+# 禁用 GitHub 更新检查（默认启用）
+disableUpdateCheck: true
+# 日志路径
+# ==================================================
+# 自定义日志文件夹路径（默认在 config/logs）
+# logpath: /path/to/logs
+# 日志输出目标（通过环境变量 LOG_TARGETS 设置）
+# both（默认）：输出到 stdout 和文件
+# stdout：仅输出到 stdout
+# file：仅输出到文件
+# Docker/Proxmox 容器统计
+# ==================================================
+# 全局显示所有容器统计
+showStats: true
+# 服务级设置，优先级高于全局设置
+# ToDo:
+# - Example Service:
+#     showStats: true
+# 状态显示样式
+# ==================================================
+# 可选：dot（绿色圆点）、basic（显示 UP/DOWN），默认显示响应时间（ms）
+statusStyle: "dot"
+# 服务级设置，优先级高于全局设置
+# ToDo:
+# - Example Service:
+#     statusStyle: 'dot'
+# 实例名称
+# ==================================================
+# 用于自动 Docker 服务发现，区分多个 Homepage 实例
+instanceName: "Vaciller's Homepage"
+# API 错误消息
+# ==================================================
+# 全局隐藏 API 错误消息（默认显示）
+hideErrors: true
+# 服务级设置，优先级高于全局设置
+# - Example Service:
+#     widget:
+#       hideErrors: true

@@ -1,24 +1,306 @@
-# Docker 集成设置
-# ToDo
+# 支持 IP:PORT 和 Socket 两种连接方式
 
-# 本地 Docker
+# TCP/IP 连接方式
+# ----------------------------------------------------------------------------------------------------
+# 基础 TCP 配置
+# ==================================================
+# 确保 Docker 实例已配置为通过 HTTP API 接受流量
+# ToDo:
+# my-remote-docker:
+#   host: 192.168.0.101
+#   port: 2375
+# TLS 加密连接
+# ==================================================
+# 支持使用 TLS 和客户端证书认证
+# ToDo:
+# my-remote-docker:
+#   host: 192.168.0.101
+#   port: 2375
+#   tls:
+#     # 相对于 config 目录
+#     keyFile: tls/key.pem
+#     caFile: tls/ca.pem
+#     certFile: tls/cert.pem
+
+# Docker Socket Proxy
+# ----------------------------------------------------------------------------------------------------
+# 出于安全考虑，不建议直接暴露 Docker Socket，可使用 docker-socket-proxy 容器提供受限的 API 访问
+# docker-compose 配置示例
+# ==================================================
+# ToDo:
+# services:
+#   dockerproxy:
+#     image: ghcr.io/tecnativa/docker-socket-proxy:latest
+#     container_name: dockerproxy
+#     environment:
+#       - CONTAINERS=1  # 允许查看容器（必需）
+#       - SERVICES=1    # 允许查看服务（Swarm 模式需要）
+#       - TASKS=1       # 允许查看任务（Swarm 模式需要）
+#       - POST=0        # 禁止 POST 操作（只读模式）
+#     ports:
+#       - 127.0.0.1:2375:2375  # 仅本地访问
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock:ro  # 只读挂载
+#     restart: unless-stopped
+# 
+#   homepage:
+#     image: ghcr.io/gethomepage/homepage:latest
+#     container_name: homepage
+#     volumes:
+#       - /path/to/config:/app/config
+#     ports:
+#       - 3000:3000
+#     restart: unless-stopped
+# docker.yaml 配置
+# ==================================================
+# ToDo:
+# my-docker:
+#   host: dockerproxy  # 使用 proxy 服务名
+#   port: 2375
+# HTTPS 连接
+# ==================================================
+# 仅当目标主机支持 HTTPS 时才使用 protocol: https，不需要 TLS 证书
+# 如果通过反向代理（如 Traefik）提供 HTTPS 服务
+# ToDo:
+# my-docker:
+#   host: dockerproxy
+#   port: 443
+#   protocol: https  # 启用 HTTPS
+# 带认证的反向代理
+# ToDo:
+# my-docker:
+#   host: dockerproxy
+#   port: 443
+#   protocol: https
+#   headers:
+#     Authorization: Basic <base64-encoded-credentials>
+
+# 直接使用 Socket
+# ----------------------------------------------------------------------------------------------------
+# 使用 Socket 时，Homepage 必须以 root 用户运行
+# docker-compose 配置
+# ==================================================
+# ToDo:
+# homepage:
+#   image: ghcr.io/gethomepage/homepage:latest
+#   container_name: homepage
+#   volumes:
+#     - /path/to/config:/app/config
+#     - /var/run/docker.sock:/var/run/docker.sock  # 挂载 Docker Socket
+#   ports:
+#     - 3000:3000
+#   restart: unless-stopped
+# docker.yaml 配置
+# ==================================================
+# ToDo:
 # my-docker:
 #   socket: /var/run/docker.sock
 
-# 远程 Docker（需开启 TCP API）
-# my-docker:
-#   host: 192.168.1.100
-#   port: 2375
+# 服务配置与容器关联
+# ----------------------------------------------------------------------------------------------------
+# 配置 Docker 实例后，可在服务中关联容器以显示统计和状态
+# 交互功能：点击服务状态指示器可展开容器统计信息（CPU、内存、网络活动）
+# ToDo:
+# - Emby:
+#     icon: emby.png
+#     href: "http://emby.home/"
+#     description: Media server
+#     # docker.yaml 中配置的服务器名称
+#     server: my-docker
+#     # 要连接的容器名称
+#     container: emby
 
-# Docker Socket 代理（推荐）
-# my-docker:
-#   host: dockerproxy
-#   port: 2375
-
-# 自动服务发现（通过容器 label）
+# 自动服务发现
+# ----------------------------------------------------------------------------------------------------
+# 通过容器标签自动发现和配置服务
+# 基础标签配置
+# ==================================================
+# 特性：
+#   - 无需在 services.yaml 中手动配置
+#   - 自动推断 server 和 container 值
+#   - 支持所有服务配置选项
+# ToDo:
+# services:
+#   emby:
+#     image: lscr.io/linuxserver/emby:latest
+#     container_name: emby
+#     ports:
+#       - 8096:8096
+#     restart: unless-stopped
+#     labels:
+#       - homepage.group=Media
+#       - homepage.name=Emby
+#       - homepage.icon=emby.png
+#       - homepage.href=http://emby.home/
+#       - homepage.description=Media server
+# Docker Swarm 标签
+# ==================================================
+# Swarm 模式需使用 deploy/labels
+# ToDo:
+# deploy:
+#   labels:
+#     - homepage.icon=foobar
+# Widget 配置标签
+# ==================================================
+# 支持通过标签配置 widget
+# ToDo:
 # labels:
 #   - homepage.group=Media
 #   - homepage.name=Emby
 #   - homepage.icon=emby.png
 #   - homepage.href=http://emby.home/
-#   - homepage.description=Media Server
+#   - homepage.description=Media server
+#   - homepage.widget.type=emby
+#   - homepage.widget.url=http://emby.home
+#   - homepage.widget.key=yourembyapikeyhere
+#   - homepage.widget.fields=["field1","field2"]  # 可选
+# 多个 Widget 配置（索引方式）
+# ==================================================
+# ToDo:
+# labels:
+#   - homepage.group=Media
+#   - homepage.name=Emby
+#   - homepage.icon=emby.png
+#   - homepage.href=http://emby.home/
+#   - homepage.widgets[0].type=emby
+#   - homepage.widgets[0].url=http://emby.home
+#   - homepage.widgets[0].key=yourembyapikeyhere
+#   - homepage.widgets[1].type=uptimekuma
+#   - homepage.widgets[1].url=http://uptimekuma.home
+#   - homepage.widgets[1].slug=youreventslughere
+# CustomAPI Widget 字段映射
+# ==================================================
+# ToDo:
+# labels:
+#   - homepage.group=Media
+#   - homepage.name=Emby
+#   - homepage.icon=emby.png
+#   - homepage.href=http://emby.home/
+#   - homepage.description=Media server
+#   - homepage.widget.type=customapi
+#   - homepage.widget.url=http://argus.service/api/v1/service/summary/emby
+#   - homepage.widget.mappings[0].label=Deployed Version
+#   - homepage.widget.mappings[0].field.status=deployed_version
+#   - homepage.widget.mappings[1].label=Latest Version
+#   - homepage.widget.mappings[1].field.status=latest_version
+
+# Docker Swarm 支持
+# ----------------------------------------------------------------------------------------------------
+# 启用 Swarm 模式
+# ==================================================
+# ToDo:
+# my-docker:
+#   socket: /var/run/docker.sock
+#   swarm: true
+# 部署约束
+# ==================================================
+# 为确保发现所有服务，Homepage 必须部署在管理节点
+# stack.yaml 配置
+# ToDo:
+# deploy:
+#   placement:
+#     constraints:
+#       - node.role == manager  # 部署到管理节点
+# 服务标签
+# ==================================================
+# Swarm 模式必须使用服务标签（deploy.labels），而不是容器标签
+# ToDo:
+# services:
+#   emby:
+#     image: lscr.io/linuxserver/emby:latest
+#     deploy:
+#       labels:
+#         - homepage.group=Media
+#         - homepage.name=Emby
+#         # ... 其他标签
+
+# 完整配置示例
+# ----------------------------------------------------------------------------------------------------
+# docker.yaml 示例
+# ==================================================
+# ToDo:
+# 本地 Docker Socket（开发环境）
+# local-docker:
+#   socket: /var/run/docker.sock
+# 
+# 远程 Docker via TCP（生产环境）
+# production-docker:
+#   host: 192.168.1.100
+#   port: 2375
+#   tls:
+#     keyFile: tls/key.pem
+#     caFile: tls/ca.pem
+#     certFile: tls/cert.pem
+# 
+# Docker Socket Proxy（安全推荐）
+# secured-docker:
+#   host: dockerproxy
+#   port: 2375
+# 
+# Docker Swarm 集群
+# swarm-cluster:
+#   socket: /var/run/docker.sock
+#   swarm: true
+# docker-compose.yml 示例
+# ==================================================
+# ToDo:
+# services:
+#   dockerproxy:
+#     image: ghcr.io/tecnativa/docker-socket-proxy:latest
+#     container_name: dockerproxy
+#     environment:
+#       - CONTAINERS=1
+#       - POST=0  # 只读模式
+#     ports:
+#       - 127.0.0.1:2375:2375
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock:ro
+#     restart: unless-stopped
+# 
+#   homepage:
+#     image: ghcr.io/gethomepage/homepage:latest
+#     container_name: homepage
+#     volumes:
+#       - ./config:/app/config
+#     ports:
+#       - 3000:3000
+#     depends_on:
+#       - dockerproxy
+#     restart: unless-stopped
+# services.yaml 示例
+# ==================================================
+# ToDo:
+# - Media Services:
+#     - Plex:
+#         icon: plex.png
+#         href: http://plex.local:32400/
+#         server: secured-docker
+#         container: plex
+#         showStats: true
+#
+#     - Emby:
+#         icon: emby.png
+#         href: http://emby.local:8096/
+#         server: secured-docker
+#         container: emby
+# 
+# 通过标签自动发现的服务将显示在这里
+# - Auto Discovered:
+#   无需手动配置，容器标签会自动创建服务
+# Container Labels 示例
+# ==================================================
+# ToDo:
+# services:
+#   plex:
+#     image: plexinc/pms-docker
+#     container_name: plex
+#     labels:
+#       - homepage.group=Media Services
+#       - homepage.name=Plex
+#       - homepage.icon=plex.png
+#       - homepage.href=http://plex.local:32400/
+#       - homepage.description=Media Server
+#       - homepage.widget.type=plex
+#       - homepage.widget.url=http://plex.local:32400
+#       - homepage.widget.token=plextoken123456
+#       - homepage.weight=50

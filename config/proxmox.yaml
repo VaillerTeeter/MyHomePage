@@ -1,15 +1,159 @@
-# Proxmox 集成设置
-# ToDo
+# 用于集成 Proxmox VE 虚拟化平台监控
 
-# 配置连接
-# url: https://proxmox.host:8006
-# token: api@pam!homepage
-# secret: your-secret
+# 前置要求
+# ----------------------------------------------------------------------------------------------------
+# Proxmox VE：6.x 或 7.x 版本
+# API Token：需要创建具有适当权限的 API 令牌
+# 网络连通性：Homepage 必须能访问 Proxmox 管理接口（默认端口 8006）
 
-# 配置服务
+# Proxmox 连接配置
+# ----------------------------------------------------------------------------------------------------
+# 基础配置
+# ==================================================
+# 必须与实际的 Proxmox 节点名称匹配
+# Note:
+#   - pve：配置键名，必须与 services.yaml 中的 proxmoxNode 字段匹配
+#   - url：Proxmox 管理界面完整 URL（必须包含 https）
+#   - token：API 令牌标识（格式：用户名@认证域!令牌ID）
+#   - secret：API 令牌的密钥
+# ToDo:
+# pve:
+#   url: https://proxmox.host.or.ip:8006
+#   token: username@pam!Token ID
+#   secret: secret1234567890
+# 多节点配置
+# ==================================================
+# ToDo:
+# pve-node1:
+#   url: https://192.168.1.100:8006
+#   token: api@pam!homepage
+#   secret: secret1111111111
+# 
+# pve-node2:
+#   url: https://192.168.1.101:8006
+#   token: api@pam!homepage
+#   secret: secret2222222222
+
+# 服务配置
+# ----------------------------------------------------------------------------------------------------
+# 配置选项
+# ==================================================
+# proxmoxNode：Proxmox 节点名称，需匹配 `proxmox.yaml` 中的键名
+# proxmoxVMID：VM 或 LXC 容器的 ID（在 Proxmox 界面中显示的数字）
+# proxmoxType：虚拟机类型：`qemu`（默认）或 `lxc`
+# QEMU 虚拟机示例
+# ==================================================
+# ToDo:
 # - HomeAssistant:
 #     icon: home-assistant.png
-#     href: http://homeassistant.local
+#     href: http://homeassistant.local/
 #     description: Home automation
 #     proxmoxNode: pve
 #     proxmoxVMID: 101
+#     # 默认值，可省略
+#     # proxmoxType: qemu
+# LXC 容器示例
+# ==================================================
+# ToDo:
+# - Nginx:
+#     icon: nginx.png
+#     href: http://nginx.local/
+#     description: Web server
+#     proxmoxNode: pve
+#     proxmoxVMID: 200
+#     # 明确指定为 LXC 容器
+#     proxmoxType: lxc
+# 多节点混合示例
+# ==================================================
+# ToDo:
+# - Production VMs:
+#     - Database Server:
+#         icon: postgresql.png
+#         href: http://db.local/
+#         description: PostgreSQL Database
+#         # 运行在 node1
+#         proxmoxNode: pve-node1
+#         proxmoxVMID: 105
+# 
+#     - Redis Cache:
+#         icon: redis.png
+#         href: http://redis.local/
+#         description: Redis Cache
+#         # 运行在 node2
+#         proxmoxNode: pve-node2
+#         proxmoxVMID: 110
+#         proxmoxType: lxc
+
+# 完整配置示例
+# ----------------------------------------------------------------------------------------------------
+# proxmox.yaml 示例
+# ==================================================
+# ToDo:
+# 单节点配置
+# pve:
+#   url: https://192.168.1.100:8006
+#   token: api@pam!homepage
+#   secret: 12345678-abcd-ef12-3456-7890abcdef12
+# 多节点配置（集群）
+# main-node:
+#   url: https://pve1.example.com:8006
+#   token: homepage@pam!homepage-integration
+#   secret: a1b2c3d4-e5f6-7890-1234-567890abcdef
+# 
+# secondary-node:
+#   url: https://pve2.example.com:8006
+#   token: homepage@pam!homepage-integration
+#   secret: b2c3d4e5-f6g7-8901-2345-67890abcdef1
+# 
+# tertiary-node:
+#   url: https://pve3.example.com:8006
+#   token: homepage@pam!homepage-integration
+#   secret: c3d4e5f6-g7h8-9012-3456-7890abcdef12
+# services.yaml 示例
+# ==================================================
+# - Proxmox VMs:
+#     - TrueNAS VM:
+#         icon: truenas.png
+#         href: http://truenas.local/
+#         description: Network Attached Storage
+#         proxmoxNode: main-node
+#         proxmoxVMID: 100
+# 
+#     - pfSense VM:
+#         icon: pfsense.png
+#         href: http://pfsense.local/
+#         description: Firewall & Router
+#         proxmoxNode: main-node
+#         proxmoxVMID: 101
+# 
+# - LXC Containers:
+#     - AdGuard Home:
+#         icon: adguardhome.png
+#         href: http://adguard.local/
+#         description: DNS Ad Blocking
+#         proxmoxNode: secondary-node
+#         proxmoxVMID: 200
+#         proxmoxType: lxc
+# 
+#     - Pi-hole:
+#         icon: pihole.png
+#         href: http://pihole.local/
+#         description: DNS Filter
+#         proxmoxNode: secondary-node
+#         proxmoxVMID: 201
+#         proxmoxType: lxc
+# 
+# - Kubernetes Cluster:
+#     - k3s-master:
+#         icon: kubernetes.png
+#         href: https://k8s.example.com:6443
+#         description: K3s Master Node
+#         proxmoxNode: tertiary-node
+#         proxmoxVMID: 300
+# 
+#     - k3s-worker1:
+#         icon: kubernetes.png
+#         href: https://k8s.example.com:6443
+#         description: K3s Worker Node 1
+#         proxmoxNode: tertiary-node
+#         proxmoxVMID: 301
