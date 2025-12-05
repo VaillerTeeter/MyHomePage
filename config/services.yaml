@@ -1,386 +1,151 @@
+---
 # 服务配置，支持无限数量的分组和每个分组内的无限服务
 
-# 基本结构与分组
-# ----------------------------------------------------------------------------------------------------
-# 基础服务配置
-# ==================================================
-# ToDo:
-# - Group A:
-#     - Service A:
-#         href: http://localhost/
-# 
-# - Group B:
-#     - Service B:
-#         href: http://localhost/
-# 嵌套分组
-# ==================================================
-# ToDo:
-# - Group A:
-#     - Service A:
-#         href: http://localhost/
-# 
-#     # 嵌套子组
-#     - Group B:
-#         - Service B:
-#             href: http://localhost/
-#         - Service C:
-#             href: http://localhost/
+- Company:
+    - 权限 & 工作流:
+        - 易链:
+            icon: /icons/company-elink.png
+            href: https://elink.thundersoft.com/
+            ping: elink.thundersoft.com
+        - 集团工作平台:
+            icon: /icons/company.ico
+            href: http://i.thundersoft.com/
+            ping: i.thundersoft.com
+    - Code:
+        - OpenGrok:
+            icon: /icons/company-opengrok.png
+            href: http://192.168.6.247:8080/source/
+            ping: 192.168.6.247
+        - Gerrit:
+            icon: /icons/company-gerrit.ico
+            href: http://10.2.12.42/gerrit/dashboard/self
+            ping: 10.2.12.42
+        - Jenkins:
+            icon: /icons/company-jenkins.svg
+            href: http://10.0.54.250:8080/
+            ping: 10.0.54.250
+    - 资料:
+        - 高通文档:
+            icon: /icons/company-qualcomm.png
+            href: https://createpoint.qti.qualcomm.com/chipcenter/#search/global/searchArgs/rows||10||sortField||score||sortOrder||desc||fq_facetChipsets||QAM8295P
+            ping: createpoint.qti.qualcomm.com
+        - QNX 7.1:
+            icon: /icons/company-qnx7.1.png
+            href: https://www.qnx.com/developers/docs/7.1
+            ping: www.qnx.com
+        - QNX 8.0:
+            icon: /icons/company-qnx8.0.png
+            href: https://www.qnx.com/developers/docs/8.0
+            ping: www.qnx.com
+        - 飞书个性签名:
+            icon: /icons/company-documents.png
+            href: https://ituhdo1hkk.feishu.cn/docx/Lw0xdER0qoExN3xgP7Fc9AItnob
+            ping: ituhdo1hkk.feishu.cn
 
-# 服务基础属性
-# ----------------------------------------------------------------------------------------------------
-# 必需字段
-# ==================================================
-# ToDo:
-# href: 服务访问地址（必需）
-# 可选字段
-# ==================================================
-# ToDo:
-# description: 服务描述文本
-# icon: 服务图标（支持多种格式）
-# ping: 监控主机可用性（ICMP ping）
-# siteMonitor: 监控 URL 响应时间（HTTP）
-# server: Docker 服务器名称
-# container: Docker 容器名称
-# widget: 服务集成 Widget
-# target: 链接打开方式（_blank, _self, _top）
-# showStats: 是否显示容器统计
-# statusStyle: 状态指示器样式
+- Anime & movie:
+    - 资讯:
+        - 新番表:
+            icon: /icons/anime-new_anime.ico
+            href: https://acgsecrets.hk/
+            ping: acgsecrets.hk
+        - 萌娘百科:
+            icon: /icons/anime-meng.ico
+            href: https://zh.moegirl.org.cn/
+            ping: zh.moegirl.org.cn
+    - Anime:
+        - SubsPlease:
+            icon: /icons/anime-subsplease.ico
+            href: https://subsplease.org/
+            ping: subsplease.org
+        - 漫猫动漫:
+            icon: /icons/anime-comicat.ico
+            href: http://3.comicat.115000.xyz/
+            ping: 3.comicat.115000.xyz
+        - VCB-Studio:
+            icon: /icons/anime-vcb.png
+            href: https://vcb-s.com/
+            ping: vcb-s.com
+        - NYAA:
+            icon: /icons/anime-nyaa.png
+            href: https://nyaa.si/
+            ping: nyaa.si
+        - ACG:
+            icon: /icons/anime-acg.ico
+            href: https://acg.rip/
+            ping: acg.rip
+        - 东京图书馆:
+            icon: /icons/anime-tokyo.png
+            href: https://tokyo-tosho.net/
+            ping: tokyo-tosho.net
+    - 字幕:
+        - OpenSubTitles:
+            icon: /icons/anime-opensubtitles.ico
+            href: https://www.opensubtitles.org/
+            ping: www.opensubtitles.org
 
-# 服务 Widget 配置
-# ----------------------------------------------------------------------------------------------------
-# 单个 Widget 配置
-# ==================================================
-# 每个服务可以附加一个 widget 来显示动态信息
-# ToDo:
-# - Emby:
-#     icon: emby.png
-#     href: http://emby.host.or.ip/
-#     description: Movies & TV Shows
-#     widget:
-#       type: emby
-#       url: http://emby.host.or.ip
-#       key: apikeyapikeyapikeyapikeyapikey
-# 多个 Widget 配置
-# ==================================================
-# 单个服务可附加多个 widget，展示不同信息源
-# Kubernetes ingress 注解暂不支持单个服务多个 widget
-# ToDo:
-# - Emby:
-#     icon: emby.png
-#     href: http://emby.host.or.ip/
-#     description: Movies & TV Shows
-#     widgets:
-#       - type: emby
-#         url: http://emby.host.or.ip
-#         key: apikeyapikeyapikeyapikeyapikey
-#       - type: uptimekuma
-#         url: http://uptimekuma.host.or.ip:port
-#         slug: statuspageslug
-# 字段可见性控制
-# ==================================================
-# 可通过 fields 属性指定显示的字段，未指定则显示所有字段
-# ToDo:
-# - Sonarr:
-#     icon: sonarr.png
-#     href: http://sonarr.host.or.ip
-#     widget:
-#       type: sonarr
-#       # 仅显示这两个字段
-#       fields: ["wanted", "queued"]
-#       url: http://sonarr.host.or.ip
-#       key: apikeyapikeyapikeyapikeyapikey
+- Cloud Server:
+    - Tools:
+        - DNS 解析:
+            icon: /icons/cloud-dns.ico
+            href: https://dnsnext.console.aliyun.com/authoritative/domains/vaciller.top
+            ping: dnsnext.console.aliyun.com
+        - SSL 证书:
+            icon: /icons/cloud-ssl.png
+            href: https://console.cloud.tencent.com/ssl
+            ping: console.cloud.tencent.com
+    - Docker:
+        - CasaOS:
+            icon: /icons/docker-casaos.png
+            href: https://casaos.vaciller.top/
+            ping: casaos.vaciller.top
+        - CasaOS-MAC-Mini-M4:
+            icon: /icons/docker-casaos.png
+            href: https://casaos-mac.vaciller.top/
+            ping: casaos-mac.vaciller.top
+        - CineMore:
+            icon: /icons/docker-cinemore.ico
+            href: https://cinemore.vaciller.top/
+            ping: cinemore.vaciller.top
+    - FRP:
+        - Frps:
+            icon: /icons/frp-frps.png
+            href: https://frps.vaciller.top/
+            ping: frps.vaciller.top
+        - Frpc:
+            icon: /icons/frp-frpc.png
+            href: https://frpc.vaciller.top/
+            ping: frpc.vaciller.top
 
-# 区块高亮
-# ----------------------------------------------------------------------------------------------------
-# 数值高亮规则
-# ==================================================
-# 支持运算符：gt, gte, lt, lte, eq, ne, between, outside
-# ToDo:
-# - Sonarr:
-#     icon: sonarr.png
-#     href: http://sonarr.host.or.ip
-#     widget:
-#       type: sonarr
-#       url: http://sonarr.host.or.ip
-#       key: ${SONARR_API_KEY}
-#       highlight:
-#         queued:
-#           numeric:
-#             - level: danger
-#               when: gte
-#               value: 20
-#             - level: warn
-#               when: gte
-#               value: 5
-#             - level: good
-#               when: eq
-#               value: 0
-# 字符串高亮规则
-# ==================================================
-# 支持：equals, includes, startsWith, endsWith, regex
-# ToDo:
-#         status:
-#           string:
-#             - level: danger
-#               when: regex
-#               value: "(failed|import) pending"
-#             - level: good
-#               when: equals
-#               value: "All good"
-#         status_code:
-#           string:
-#             - level: warn
-#               when: regex
-#               value: "^5\\d{2}$"
-# 高级选项
-# ==================================================
-# ToDo:
-# negate: true: 反转规则
-# caseSensitive: true: 字符串区分大小写
-# flags: 自定义正则表达式标志
-
-# 图标配置
-# ----------------------------------------------------------------------------------------------------
-# Dashboard Icons
-# ==================================================
-# 自动使用 Dashboard Icons 中的图标，可带或不带扩展名
-# ToDo:
-# - Sonarr:
-#     icon: sonarr.png  # 或 sonarr.webp, sonarr.svg
-#     href: http://sonarr.host/
-# 图标前缀库
-# ==================================================
-# Material Design Icons (MDI)
-# warring: MDI 品牌图标已弃用，建议使用 Simple Icons 避免未来兼容性问题
-# ToDo:
-# - Service:
-#     icon: mdi-flask-outline
-#     href: http://service.host/
-# Simple Icons
-# ToDo:
-# - GitHub:
-#     icon: si-github
-#     href: https://github.com/
-# selfh.st/icons
-# ToDo:
-# - Service:
-#     icon: sh-service  # 默认 PNG 版本
-#     href: http://service.host/
-#
-# - Service:
-#     icon: sh-service.svg  # 指定 SVG 版本
-#     href: http://service.host/
-# 自定义颜色
-# ==================================================
-# 为 MDI 和 Simple Icons 指定十六进制颜色码
-# ToDo:
-# - Custom Service:
-#     icon: mdi-cog-#f0d453      # 自定义 MDI 颜色
-#     href: http://service.host/
-# 
-# - GitLab:
-#     icon: si-gitlab-#a712a2    # 自定义 Simple Icons 颜色
-#     href: https://gitlab.com/
-# 远程图标
-# ==================================================
-# 使用绝对 URL
-# ToDo:
-# - Service:
-#     icon: https://example.com/icons/myicon.png
-#     href: http://service.host/
-# 本地图标
-# ==================================================
-# note:
-#   - 在 Docker 中挂载目录到 /app/public/icons
-#   - 重启容器（添加新图标时必须重启）
-#   - 引用图标
-# ToDo:
-# - Service:
-#     icon: /icons/myicon.png
-#     href: http://service.host/
-
-# 网络监控
-# ----------------------------------------------------------------------------------------------------
-# Ping 监控（ICMP）
-# ==================================================
-# 监控主机可用性，v0.8.0+ 使用系统 ping 命令（仅 IPv4）
-# 某些系统需要安装 iputils-ping 包
-# ToDo:
-# - Sonarr:
-#     icon: sonarr.png
-#     href: http://sonarr.host/
-#     # 可以是主机名或 IP
-#     ping: sonarr.host
-# Site Monitor（HTTP）
-# ==================================================
-# 监控 URL 响应时间，通过 HTTP HEAD 请求（失败时回退到 GET）
-# 不会自动登录或绕过认证（如 Authelia）
-# 反向代理和认证场景下通常需要使用内部 URL 才能正确显示状态
-# ToDo:
-# - Sonarr:
-#     icon: sonarr.png
-#     href: http://sonarr.host/
-#     # 可与 href 或 ping 不同
-#     siteMonitor: http://sonarr.host/
-# 
-# - Radarr:
-#     icon: radarr.png
-#     href: http://radarr.host/
-#     # 可监控不同地址
-#     siteMonitor: http://some.other.host/
-# 状态样式
-# ==================================================
-# 通过 statusStyle 控制状态指示器外观
-# 在 service 中设置
-# ToDo:
-# - Sonarr:
-#     icon: sonarr.png
-#     href: http://sonarr.host/
-#     siteMonitor: http://sonarr.host/
-#     statusStyle: dot  # 或 basic
-# 或在 settings.yaml 中全局设置
-# ToDo:
-# statusStyle: dot  # dot: 彩色圆点, basic: 显示 UP/DOWN
-
-# Docker 集成
-# ----------------------------------------------------------------------------------------------------
-# 连接 Docker 容器（本地或远程）以显示实时统计信息
-# ==================================================
-# ToDo:
-# - Group A:
-#     - Service A:
-#         href: http://localhost/
-#         description: This is my service
-#         # Docker 服务器名称
-#         server: my-server
-#         # 容器名称或 ID
-#         container: my-container
-# 
-# - Group B:
-#     - Service B:
-#         href: http://localhost/
-#         description: This is another service
-#         server: other-server
-#         container: other-container
-# 交互功能：点击服务状态标签可展开容器统计（CPU、内存、网络活动）
-# 统计控制：可通过 showStats 控制是否显示
-# ToDo:
-# - Service:
-#     showStats: true  # 强制显示统计
-
-# 服务集成/Widget
-# ----------------------------------------------------------------------------------------------------
-# 服务可附加 widget 显示动态数据，与 Docker 集成功能独立
-# 配置方法配置方法
-# ==================================================
-# - Group A:
-#     - Sonarr:
-#         icon: sonarr.png
-#         href: http://sonarr.host/
-#         description: Series management
-#         widget:
-#           type: sonarr
-#           url: http://sonarr.host
-#           key: apikeyapikeyapikeyapikeyapikey
-# 
-# - Group B:
-#     - Radarr:
-#         icon: radarr.png
-#         href: http://radarr.host/
-#         description: Movie management
-#         widget:
-#           type: radarr
-#           url: http://radarr.host
-#           key: apikeyapikeyapikeyapikeyapikey
-# 支持的 Widget 类型
-# ==================================================
-# 完整列表参见 Widgets 文档，包括但不限于：
-# 媒体类：Emby, Jellyfin, Plex, Sonarr, Radarr, Lidarr, Readarr, Bazarr, Tautulli
-# 下载类：qBittorrent, Transmission, Deluge, SABnzbd, NZBGet
-# 监控类：Uptime Kuma, Prometheus, Grafana, Netdata
-# 基础架构：Proxmox, Portainer, Docker
-# 开发工具：GitHub, GitLab, Gitea, Jenkins
-# 网络：Pi-hole, AdGuard Home, OPNSense, PFSense
-# 存储：Nextcloud, Syncthing, TrueNAS
-# 其他：Home Assistant, OctoPrint, Paperless-ngx
-
-# 完整配置示例
-# ----------------------------------------------------------------------------------------------------
-# 媒体服务组
-- Media Services:
-    - Plex:
-        icon: plex.png
-        href: http://plex.local:32400/
-        description: Media Server
-        ping: plex.local
-        server: docker-server
-        container: plex
-        widget:
-          type: plex
-          url: http://plex.local:32400
-          token: plextokenplextokenplextoken
-
-    - Sonarr:
-        icon: sonarr.png
-        href: http://sonarr.local:8989/
-        description: TV Series Management
-        siteMonitor: http://sonarr.local:8989/
-        statusStyle: dot
-        widget:
-          type: sonarr
-          url: http://sonarr.local:8989
-          key: sonarrapikeysonarrapikey
-          fields: ["wanted", "queued"]
-          highlight:
-            queued:
-              numeric:
-                - level: danger
-                  when: gte
-                  value: 10
-                - level: warn
-                  when: gte
-                  value: 3
-
-# 下载服务组
-- Download Clients:
-    - qBittorrent:
-        icon: qbittorrent.png
-        href: http://qbittorrent.local:8080/
-        description: BitTorrent Client
-        ping: qbittorrent.local
-        widget:
-          type: qbittorrent
-          url: http://qbittorrent.local:8080
-          username: admin
-          password: adminadmin
-
-# 监控服务组
-- Monitoring:
-    - Uptime Kuma:
-        icon: uptime-kuma.png
-        href: http://uptime.local:3001/
-        description: Uptime Monitoring
-        widgets:
-          - type: uptimekuma
-            url: http://uptime.local:3001
-            slug: home
-          - type: uptimekuma
-            url: http://uptime.local:3001
-            slug: internet
-
-# 基础架构组
-- Infrastructure:
-    - Proxmox VE:
-        icon: proxmox.png
-        href: https://proxmox.local:8006/
-        description: Virtualization Platform
-        siteMonitor: https://proxmox.local:8006/
-        target: _blank
-
-    - Portainer:
-        icon: portainer.png
-        href: http://portainer.local:9000/
-        description: Docker Management
-        server: docker-server
-        container: portainer
-        showStats: true
+- DailyKit:
+    - Code:
+        - github:
+            icon: /icons/code-github.png
+            href: https://github.com/VaillerTeeter?tab=repositories
+            ping: github.com
+    - AI:
+        - Kimi:
+            icon: /icons/ai-kimi.ico
+            href: https://www.kimi.com/
+            ping: www.kimi.com
+        - DeepSeek:
+            icon: /icons/ai-deepseek.png
+            href: https://chat.deepseek.com/
+            ping: chat.deepseek.com
+    - Money:
+        - Paypal:
+            icon: /icons/money-paypal.ico
+            href: https://www.paypal.com/
+            ping: www.paypal.com
+    - Computer:
+        - Office Tool Plus:
+            icon: /icons/computer-office.ico
+            href: https://otp.landian.vip/
+            ping: otp.landian.vip
+        - 系统镜像:
+            icon: /icons/computer-image.ico
+            href: https://next.itellyou.cn/
+            ping: next.itellyou.cn
+        - VPN-雷霆:
+            icon: /icons/computer-leiting.ico
+            href: https://vopqaq93yh4b.ltltltltltltlt.top/
+            ping: vopqaq93yh4b.ltltltltltltlt.top
